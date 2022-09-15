@@ -1,0 +1,108 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>게시판 목록</title>
+<%@ include file="/include/taglibs.jsp"%>
+<style type="text/css">
+	* {font-size: 9pt;}
+	p {width: 600px; text-align: right;}
+	table thead tr th {background-color: gray;}
+</style>
+<script src="js/jquery-1.6.1.min.js" ></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	// 글쓰기폼
+	$("#writeFormBtn").click(function(){
+		$("#inputType").val("insert");
+		$("#form").attr("action","boardInputForm").submit();
+	});
+	
+	// 검색
+	$("#boardSearchBtn").click(function(){
+		$("#curPage").val(1);
+		$("#form").attr("action","boardList.action").submit();
+	});
+	
+});
+
+	// 페이지 검색
+	function searchPage(cPage) {
+		$("#curPage").val(cPage);
+		$("#form").attr("action","boardList.action").submit();
+	}
+	
+function onView(boardNo){
+	$("#sseq").val(boardNo);
+	$("#form").attr("action","boardView").submit();
+}
+</script>
+</head>
+<body>
+	<div align="center">
+		<form name="searchForm" action="" method="post" id="form">
+			<input type="hidden" name="sseq" id="sseq" value="0" /> 
+			<input type="hidden" name="curPage" id="curPage" value="${boardVO.curPage}"/>
+			<input type="hidden" name="inputType" id="inputType" value="" />
+			<p>
+				<select name="searchType" id="searchType">
+					<option value="">전체검색</option>
+					<option value="SUBJECT">제목</option>
+					<option value="WRITER">작성자</option>
+				</select>
+				<input type="text" name="searchString" id="searchString" value="${boardVO.searchString}" />
+				<input type="button" value="검색" id="boardSearchBtn" />
+			</p>
+		</form>
+		<table border="1" summary="게시판 목록"> 
+			<caption>게시판 목록</caption>
+			<colgroup>
+				<col width="50" />
+				<col width="300" />
+				<col width="80" />
+				<col width="100" />
+				<col width="70" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>등록 일시</th>
+					<th>조회수</th>
+				</tr>
+			</thead>
+			<tbody>
+			<c:choose>
+				<c:when test="${empty list}">
+					<tr>
+						<td align="center" colspan="5">등록된 게시물이 없습니다.</td>
+					</tr>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="list" items="${list}">
+						<tr>
+							<td align="center">${list.RNUM}</td>
+							<td align="left"><a href="javascript:onView('${list.sseq}');">${list.subject}</a></td>
+							<td align="center">${list.writer}</td>
+							<td align="center">${list.regdate}</td>
+							<td align="center">${list.cnt}</td>
+						</tr>
+					</c:forEach>		
+				</c:otherwise>
+			</c:choose>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td align="center" colspan="5"><c:if test="${!empty paging}">${paging.pageHtml}</c:if></td>
+				</tr>
+			</tfoot>
+		</table>
+		<p>
+			<input type="button" value="글쓰기" id="writeFormBtn" />
+		</p>
+	</div>
+</body>
+</html>

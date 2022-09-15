@@ -1,0 +1,14 @@
+<%@page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+
+    <%--footer--%>
+    <div id="footer_wrap">
+        <div class="footer">
+        <img src="/images/common/footer.gif" alt="서울시 구로구 구로동 212-13 벽산 디지털밸리 3차 704호 (152-775)/대표번호 : 02-335-0434/팩스 : 02-335-0435 
+    사업자번호 : 201-81-25883/사업자명 : 김숭구/상호명 : 아이넥션/Copyright @ 2014 inection All Rights Reserved." />
+        </div>
+    </div>
+    <%--//footer--%>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<%@page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<jsp:include page="../include/head.jsp" flush="true" />
+
+<%-- Add JS --%> 
+<script type="text/javascript">
+$(function(){
+	var mact = $('.gnb_05');
+	var mactDis = $('.gnb_05 ul');
+	var mactOver = $('.gnb_05');
+
+	mact.addClass("active");
+	mactDis.css("display","block");
+	mactOver.eq(0).attr("class", "active");// 메뉴순서 0부터 시작
+});
+</script> 
+
+<%--contents--%>
+<div id="subContents_wrap">
+  <div class="subContents bg0201">
+    <jsp:include page="../include/leftmenu02.jsp" flush="true" />
+    <div class="contents_wrap">
+      <div class="local_wrap">
+        <ul>
+          <li class="local">HOME > 제품소개 > Black Duck Hub</li>
+		  <li class="title">Black Duck Hub</li>
+		  <li class="subtitle1">오픈소스 보안 취약점 관리</li>
+		  <li class="subtitle2" style="font-size:25px;">Open Source Security Management</li>
+        </ul>
+      </div>
+      <div class="contents"> 
+        <%--//내용시작--%>
+        <h4 class="h4font">개요</h4>
+        <ul class="mb40">
+          <li> 현재 대부분의 애플리케이션은 오픈소스를 토대로 개발되고 있습니다. 하지만, 블랙덕에서 조사한 설문조사에 따르면, 조사에 응한 기업 중 <br />
+            	오픈소스 사용을 관리하고 모니터링하는 공식적인 프로세스가 없는 기업이 절반이나 되고 있습니다. 또한 설문조사 결과, 많은 개발부서들이 <br />
+          		개발하고 있는 자사 애플리케이션에 생각보다 더 많은 오픈소스가 포함되어 있다는 것을 발견하였습니다. 관리 및 모니터링이 되지 않는 <br />
+          		오픈소스는 애플리케이션 보안과 데이터를 Heartbleed 및 Shellshock와 같은 심각한 보안취약점에 노출시킬 수 있습니다.</li>
+        
+          <li><br/>- 포티파이 Source Code Analysis는 기업 소프트웨어 애플리케이션의 보안 취약점을 효과적으로 발견하고, 추적하여 현실적인 취약점 개선을<br />
+            <span class="ml10"></span>가능하게하는 검증된 툴들을 하나로 통합한 패키지이며, 기존의 개발 및 감사툴, 프로세스와 쉽고 유연하게 운영되도록 되어있습니다.</li>
+          <li>- 포티파이는 정확하고 일관된 결과를 제공함으로써 소프트웨어 보안 결함을 확인하고 개선하는데 소요되는 실질적인 시간을 줄여줍니다.</li>
+          <li>- 상용 소프트웨어 개발조직으로부터 검증되고 소프트웨어 잡지인 Jolt Award for Excellence의 Winner인 포티파이는 매우 극적으로 생산성을<br />
+            <span class="ml10"></span>개선하고 조직의 가능성을 증가시킴으로써 전세계의 선구적 보안 및 개발조직의 필수 분야가 되었습니다. </li>
+        </ul>
+        
+        <h4 class="h4font">기능</h4>
+        <ul class="mb40">
+       	  <li>Black Duck Hub는 개발부서와 보안부서가 서로 협업하여, 애플리케이션 포트폴리오 전반적으로 오픈소스 보안 리스크를 식별하고 완화할 수 
+       	  	<span class="ml10"></span>있도록 지원합니다. 경량화 스캐닝, 모니터링, 트래킹의 애플리케이션 보안 솔루션인 Black Duck Hub는 다음과 같은 기능을 제공합니다.</li>
+          <li><br/>- 커스텀 코드베이스로부터 오픈소스 식별</li>
+          <li>- 식별된 오픈소스를 기존에 알려진 보안취약점과 자동 맵핑</li>
+          <li>- 정책 위반 표기 및 조치 프로세스 트래킹</li>
+          <li>- 식별된 새로운 보안취약점 지속적인 모니터링</li>
+          <li class="mt20"><img src="./images/product/product_blackduck_img01.png" alt="Black Duck Hub" style="width:100%;"></li>
+        </ul>
+        
+        <h4 class="h4font">SDLC와 Black Duck Hub 자동화 연동</h4>
+          <img src="./images/product/product_blackduck_img02.png" alt="Black Duck Hub" class="mb40" style="width:100%;">
+        <h4 class="h4font">상용 코드 보안 솔루션과의 연동</h4>
+          <img src="./images/product/product_blackduck_img03.png" alt="Black Duck Hub" class="mb40" style="width:100%;">
+        <h4 class="h4font">컴플라이언스 분석 절차</h4>
+          <img src="./images/product/product_blackduck_img04.png" alt="Black Duck Hub" class="mb40" style="width:100%;">
+        
+        <h4 class="h4font">기대효과</h4>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" class="table_blue02 mb40">
+          <colgroup>
+          <col width="220px" />
+          <col width="*" />
+          </colgroup>
+          <tr>
+            <th class="top">빠른 식별 및 조치</th>
+            <td class="top"><strong>- 기업 내 사용된 오픈소스 및 보안취약점의 신속한 현황파악</strong><br/>
+              <span class="ml10"></span>어떤 프로젝트 , 어떤 오픈소스 , 어떤 버전에서 발견이 되었는지 신속한 현황파악이 가능<br/>
+              <strong>- 빠른 조치가 필요한 오픈소스 보안취약점을 신속하게 식별</strong><br/>
+              <span class="ml10"></span>보안취약점이 발견된 오픈소스에 대한 우선순위 확인 및 사내 보안정책 적용<br/>
+              <strong>- 오픈소스 보안취약점에 대한 빠른 조치 가능</strong><br/>
+              <span class="ml10"></span>대체 솔루션 적용<br/>
+              <span class="ml10"></span>보안취약점이 적거나 없는 대체 버전의 오픈소스 버전 적용<br/>
+          </tr>
+          <tr>
+            <th>지속적인 모니터링 및 자동화</th>
+            <td><strong>- 오픈소스 보안과 상용코드 보안의 통합 관리 및 자동화 가능</strong><br/>
+              <span class="ml10"></span>시큐리티 테스팅 툴(Appscan/Fortify)과 연동<br/>
+              <span class="ml10"></span>빌드툴 , CI 툴과의 연동<br/>
+              <strong>- 오픈소스 보안취약점에 대한 지속적인 모니터링</strong><br/>
+              <span class="ml10"></span>전세계 가장 많은 오픈소스 DB, 시간단위 DB 업데이트를 통해 신규보안취약점에 대한 빠른 알림 제공</td>
+          </tr>
+        </table>
+        <%--내용끝//--%> 
+      </div>
+    </div>
+  </div>
+</div>
+<jsp:include page="../include/footer.jsp" flush="true" />

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 게시판 타입정의  -->
+	<typeAliases>
+		<typeAlias type="com.inection.vo.BoardVO" alias="boardVO"/>
+		<typeAlias type="com.inection.vo.NoticeVO" alias="noticeVO"/>
+		<typeAlias type="com.inection.vo.QnaVO" alias="qnaVO" />
+		<typeAlias type="com.inection.vo.FaqVO" alias="faqVO" />
+		<typeAlias type="com.inection.vo.MemberVO" alias="memVO"/>
+		<typeAlias type="com.inection.vo.RecruitVO" alias="recruitVO" />
+		<typeAlias type="com.inection.vo.ReferenceVO" alias="referenceVO" />
+	</typeAliases>
+	<!-- 
+	<typeHandlers>
+		<typeHandler handler="org.apache.ibatis.type.ClobTypeHandler" jdbcType="CLOB" javaType="java.lang.String" />
+	</typeHandlers>
+	 -->
+	<!-- 알아보기 -->
+	<environments default="">
+		<environment id="">
+			<transactionManager type="JDBC" />
+			<dataSource type="JNDI">
+				<property name="data_source" value="java:comp/env/jdbc/myora" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 쿼리경로  -->
+	<mappers>
+		<mapper resource="com/inection/sqlMap/board.xml" />
+		<mapper resource="com/inection/sqlMap/notice.xml" />
+		<mapper resource="com/inection/sqlMap/qna.xml" />
+		<mapper resource="com/inection/sqlMap/faq.xml" />
+		<mapper resource="com/inection/sqlMap/member.xml" />
+		<mapper resource="com/inection/sqlMap/recruit.xml" />
+		<mapper resource="com/inection/sqlMap/reference.xml" />
+	</mappers>
+</configuration>

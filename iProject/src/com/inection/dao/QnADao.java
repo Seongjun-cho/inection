@@ -1,0 +1,126 @@
+package com.inection.dao;
+/** 
+ * 
+ * @author wonjongtae & leekyunggun
+ * @since  2013.09.02
+ * @category 게시판 부분 
+ * 
+ * */
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.inection.config.FactoryService;
+import com.inection.util.SessionCheck;
+import com.inection.vo.QnaVO;
+
+
+public class QnADao {
+
+	private static QnADao qnaDao;
+	private SessionCheck sc = new SessionCheck();
+	/** 싱글톤 패턴으로 객체생성  */
+	public static synchronized QnADao getDao() {
+		if (qnaDao == null)
+			qnaDao = new QnADao();
+		return qnaDao;
+	}//Finish getDao
+	
+	// TODO 메인에 올리는 게시판 목록
+	public List<QnaVO> getQnaList_Main() {
+		List<QnaVO> list = null;
+		SqlSession session = FactoryService.getFactory().openSession();
+		list = session.selectList("getQnaList_Main");
+
+		session.close();
+		return list;
+	}//Finish getQnaList_Main
+	// TODO 메인에 올리는 게시판 목록 finish
+
+	/** 게시판 목록조회 */
+	public List<QnaVO> getQnaList(QnaVO qnaVO) {
+		List<QnaVO> list = null;
+		SqlSession session = FactoryService.getFactory().openSession();
+		qnaVO.setSubject(sc.getid());
+		list = session.selectList("getQnaList",qnaVO);
+
+		session.close();
+		
+		return list;
+	}//Finish getQnaList	
+	
+	public List<QnaVO> getQnaDetailList(QnaVO qnaVO) {
+		List<QnaVO> list = null;
+		SqlSession session = FactoryService.getFactory().openSession();
+		qnaVO.setSubject(sc.getid());
+		list = session.selectList("getQnaDetailList",qnaVO);
+
+		session.close();
+		return list;
+	}//Finish getQnaList
+	
+	/** 게시판 목록 카운트 */
+	public int getQnaListCnt(QnaVO qnaVO) {
+		int result = 0;
+		SqlSession session = FactoryService.getFactory().openSession();
+		qnaVO.setSubject(sc.getid());
+		result = session.selectOne("getQnaListCnt",qnaVO);
+
+		session.close();
+		return result;
+	}//Finish getQnaListCnt
+	
+	/** 게시판 상세보기 */
+	public QnaVO getQnaDetail(int qnaNo){
+		QnaVO qnaVO = null;
+		SqlSession session = FactoryService.getFactory().openSession();
+
+		qnaVO = session.selectOne("getQnaDetail",qnaNo);
+		
+		session.commit();
+		session.close();
+		return qnaVO;
+	}//Finish getQnaDetail
+	
+	/** 게시판 글쓰기 */
+	public int getQnaInput(QnaVO qnaVO){
+		int result = 0;
+		SqlSession session = FactoryService.getFactory().openSession();
+		
+		result = session.insert("getQnaInput",qnaVO);
+		if(result == 1){
+			session.commit();			
+		}
+		session.close();
+		return result;
+	}//Finish getQnaInput
+	
+	/** 게시판 수정 */
+	public int setQnaUpdate(QnaVO qnaVO){
+		int result = 0;
+		SqlSession session = FactoryService.getFactory().openSession();
+
+		result = session.update("setQnaUpdate",qnaVO);
+		if(result == 1){
+			session.commit();			
+		}
+		session.close();
+		return result;
+	}//Finish setQnaUpdate
+	
+	/** 게시판 삭제 */
+	public int setQnaDelete(int qnaNo){
+		int result = 0;
+		SqlSession session = FactoryService.getFactory().openSession();
+
+		result = session.delete("setQnaDelete",qnaNo);
+		
+		if(result == 1){
+			session.commit();
+		}
+		session.close();
+		return result;
+	}//Finish setQnaDelete
+	
+}//Finish this class

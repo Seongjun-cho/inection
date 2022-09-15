@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qna">
+
+	<resultMap type="qnaVO" id="qnaVO">
+		<result property="content" column="content" jdbcType="CLOB" javaType="java.lang.String" />
+	</resultMap>
+
+	<!-- 메인용 게시판 목록조회 -->
+	<select id="getQnaList_Main"  parameterType="qnaVO" resultMap="qnaVO">
+		<!-- 오라클 쿼리 START
+		SELECT Y.* FROM (  
+			SELECT ROWNUM AS NUM, X.* FROM (
+				SELECT ROWNUM AS RNUM, SSEQ, SUBJECT FROM dkdlsprtus.home_qna ORDER BY REGDATE DESC 
+			) X	WHERE ROWNUM <![CDATA[<=]]> 4
+		) Y WHERE NUM > 0 -->
+		<!-- 오라클 쿼리 END -->
+		
+		<!-- MYSQL 쿼리 START -->
+		SELECT Y.* FROM (  
+			SELECT @NUM:=@NUM+1 AS NUM, X.* FROM (
+        		SELECT W.* FROM (
+        			SELECT @RNUM:=@RNUM+1 AS RNUM, SSEQ, SUBJECT, REGDATE FROM dkdlsprtus.home_qna, (SELECT @RNUM:=0) V  ORDER BY SSEQ ASC
+        		) W ORDER BY W.RNUM DESC
+			) X, (SELECT @NUM:=0) U
+		WHERE (SELECT @RN:=@RN+1 FROM (SELECT @RN:=0) P) <![CDATA[<=]]> 4
+		) Y WHERE NUM > 0
+		<!-- MYSQL 쿼리 END -->
+	</select>
+
+	<!-- 게시판 목록 조회-->
+	<select id="getQnaList" parameterType="qnaVO" resultMap="qnaVO">
+		<!-- 오라클 쿼리 START
+		SELECT Y.* FROM (  
+			SELECT ROWNUM AS NUM, X.* FROM (	
+				SELECT
+					ROWNUM AS RNUM
+					,SSEQ 
+					,GB
+					,SUBJECT
+					,CONTENT
+					,QUESTION_ID as q_id
+					,PHONE
+					,EMAIL
+					,REGDATE
+				FROM dkdlsprtus.home_qna where question_id=#{q_id}
+					<if test="searchType != null and searchType != ''">
+						AND ${searchType} LIKE '%' || #{searchString} || '%'
+					</if>
+					ORDER BY RNUM DESC
+				) X
+			WHERE ROWNUM <![CDATA[<=]]> #{endRow}
+		) Y WHERE NUM > #{startRow} -->
+		<!-- 오라클 쿼리 END -->
+		
+		<!-- MYSQL 쿼리 START -->
+		SELECT Y.* FROM (  
+			SELECT @NUM:=@NUM+1 AS RNUM, X.* FROM (
+        		SELECT W.* FROM (
+        			SELECT @RNUM:=@RNUM+1 AS NUM
+	        			,SSEQ 
+						,GB
+						,SUBJECT
+						,CONTENT
+						,QUESTION_ID as q_id
+						,PHONE
+						,EMAIL
+						,REGDATE FROM dkdlsprtus.home_qna, (SELECT @RNUM:=0) V
+        					<!-- WHERE question_id=#{q_id} -->
+							<if test="searchType != null and searchType != ''">
+								WHERE ${searchType} LIKE '%${searchString}%' 
+							</if>  ORDER BY SSEQ ASC
+        		) W ORDER BY W.NUM DESC
+			) X , (SELECT @NUM:=0) U 
+			WHERE (SELECT @RN:=@RN+1 FROM (SELECT @RN:=0) P) <![CDATA[<=]]> #{endRow}
+		) Y WHERE RNUM > #{startRow}
+		<!-- MYSQL 쿼리 END -->
+	</select>
+	
+	<!-- 게시판 목록 카운트 -->
+	<select id="getQnaListCnt" parameterType="qnaVO" resultType="int">
+		SELECT
+			COUNT(*) CNT
+		FROM dkdlsprtus.home_qna where question_id=#{q_id}
+			<if test="searchType != null and searchType != ''">
+				AND ${searchType} LIKE '%${searchString}%' 
+			</if>
+	</select>
+
+	<!-- 게시판 상세 보기 -->
+	<select id="getQnaDetail" parameterType="int" resultMap="qnaVO" >
+		SELECT
+			SSEQ 
+			,GB
+			,SUBJECT
+			,CONTENT
+			,QUESTION_ID as q_id
+			,PHONE
+			,EMAIL
+			,REGDATE
+		FROM dkdlsprtus.home_qna
+			WHERE SSEQ = #{qnaNo}
+	</select>
+	
+	<!-- 게시판 상세 보기리스트 -->
+	<select id="getQnaDetailList" parameterType="qnaVO" resultMap="qnaVO" >
+		SELECT W.* FROM (
+       			SELECT @RNUM:=@RNUM+1 AS NUM
+        			,SSEQ 
+					,SUBJECT
+					FROM dkdlsprtus.home_qna, (SELECT @RNUM:=0) V
+       					<!-- WHERE question_id=#{q_id} -->
+						<if test="searchType != null and searchType != ''">
+							WHERE ${searchType} LIKE '%${searchString}%' 
+						</if>  ORDER BY SSEQ ASC
+       		) W ORDER BY W.NUM DESC
+	</select>
+	
+	
+	<!-- 게시판 글쓰기 -->
+	<insert id="getQnaInput" parameterType="qnaVO">
+		INSERT INTO dkdlsprtus.home_qna(
+			<!--  SSEQ --> 
+			GB
+			,SUBJECT
+			,CONTENT
+			,QUESTION_ID
+			,PHONE
+			,EMAIL
+			,REGDATE
+		)VALUES(
+			<!-- S_HOME_QA.NEXTVAL     mySql은 자동 증가기능이 있음 -->
+			#{gb}
+			,#{subject}
+			,#{content}
+			,#{q_id}
+			,#{phone}
+			,#{email}
+			,NOW()    <!--  SYSDATE  -->
+		)
+	</insert>
+	
+	<!-- 게시판 수정 -->
+	<update id="setQnaUpdate" parameterType="qnaVO">
+		UPDATE dkdlsprtus.home_qna SET
+			SUBJECT = #{subject}
+			,CONTENT = #{content}
+			,GB = #{gb} 
+		WHERE SSEQ = #{sseq}
+	</update>
+	
+	<!-- 게시판 삭제 -->
+	<delete id="setQnaDelete" parameterType="int">
+		DELETE FROM dkdlsprtus.home_qna WHERE SSEQ = #{qnaNo}
+	</delete>
+	
+</mapper>

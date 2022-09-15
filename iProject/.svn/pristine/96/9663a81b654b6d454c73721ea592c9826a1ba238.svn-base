@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+.left_box {width:545px; height:551px; float:left; display:inline-block; background:url(../img/main/bg_vjr.jpg) no-repeat left 170px; position:relative;}
+.left_box p { text-align:center; margin-top:21px;}
+.left_box ul {position:absolute; top:475px; left:0; width:100%; display:inline-block;}
+.left_box ul li {float:left; display:inline-block;}
+
+/*
+
+.rollingWrap{height:384px; background:url(../images/main/rollingbg.gif) repeat-x; border-top:2px solid #fff; }
+.rollingImg{position:relative;width:1100px; margin:0 auto; }
+.rollingImg ul li{float:left; overflow:hidden}
+
+
+*/
+.main_box {width:970px; float:left; display:inline-block;}
+
+
+
+
+
+
+/* 공지사항 */
+.nt_box { width:323px; float:left; margin:13px 5px 0 0; position:relative; border:solid 1px #ccc; padding:10px 3px 3px 13px; }
+.nt_box h2 {  padding-bottom:11px; margin-bottom:18px;}
+.nt_box ol li { margin:0 0 8px 4px;}
+.nt_box ol li img {vertical-align:middle;}
+.nt_box .more {position:absolute; right:5px; top:5px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

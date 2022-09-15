@@ -1,0 +1,257 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<title>아이넥션</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../css/sub.css" />
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" language="javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript">
+	$(document).ready(function(){
+		
+
+		
+		//메인 롤링이미지
+		$("#foo3").carouFredSel({
+			scroll : {
+				duration : 500
+			},
+			auto: {
+				pauseOnHover: 'resume'				
+			},
+			prev : {
+				button		: "#foo4_prev",
+				key			: "left",
+				items		: 1,
+				duration	: 500
+			},
+			next : {
+				button		: "#foo4_next",
+				key			: "right",
+				items		: 1,
+				duration	: 500
+			}
+		});
+
+	});
+</script>
+
+
+
+
+</head>
+<body  style="background:url(./images/sub/sub_bg.jpg) repeat-x top center;">
+<div id="wrap" >
+	<div id="skipToContent"> <a href="#container" accesskey="1" title="브라우저에 따라 Alt + 1 또는 Alt + Shift + 1 또는 Shift + Esc + 1 후 Enter를 치시면 본문내용으로 바로갑니다.">본문 바로가기</a> </div>
+	<div id="header" style="background:url(./images/top/top_bg.png) no-repeat;">
+		
+		<%@ include file="../include/top.jsp" %>
+		<%-- //lnb --%> 
+	</div>
+	<%-- //header --%>
+    
+    
+
+    
+    
+    
+
+  
+    
+    
+	
+    
+    
+    
+    
+    
+    
+    
+    
+  <div id="container">
+		<div class="sub_vjr"></div>
+		<%-- //sub_vjr --%>
+		<span class="sub_vjr"><img src="./images/sub/sub_visual_5.png" width="970" height="207" /></span>
+		<div class="leftcolumn">
+			<div id="snb">
+				<h2><img src="./images/menu/left_title_05.jpg" width="200" height="36" /></h2>
+				<ul>
+				    <li><a href="notice.jsp">공지사항</a></li>
+					<li><a href="#" class="on">게시판</a></li>
+					<li><a href="pds.jsp">자료실</a></li>
+				</ul>
+			</div>
+			<div><a href="#"><img src="./images/common/left_banner_01.jpg" width="200" height="120" /></a></div>
+		</div>
+		<%-- //leftcolumn --%>
+		
+		<div class="rightcolumn">
+			<div class="top_tit">
+				<h3><img src="./images/menu/title_05_02.jpg" alt="" width="400" height="50" /></h3>
+				<div class="location"> <span class="hide">페이지 위치 : </span> <a href="#url"><img src="./images/common/ico_home.jpg" width="11" height="11" style="vertical-align:middle"/> HOME</a> &gt; <a href="#url">게시판</a> &gt; <strong>게시판</strong> </div>
+			</div>
+		
+			<%-- //top_tit --%>
+			<div class="content">
+				
+				<table class="b_list" cellspacing="0" summary="번호, 작성자, 제목, 등록일,  게시판 리스트">
+					
+					<colgroup>
+					<col width="100" />
+					<col width="*" />
+					<col width="70" />
+					<col width="90" />
+					<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">번호</th>
+							<th scope="col">제목</th>
+							<th scope="col">첨부파일</th>
+							<th scope="col">등록일</th>
+							<th scope="col">조회수</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td scope="row">10</td>
+							<td class="txt_left"><a href="./notice_view.jsp">아이넥션 2013 CEBIT 박람회 참관안내</a></td>
+							<td><img src="./images/board/icin_p.gif" alt="첨부파일 PDF" /></td>
+							<td>2013.09.31</td>
+							<td>123456</td>
+						</tr>
+						<tr>
+							<td scope="row">9</td>
+							<td class="txt_left"><a href="#url">아이넥션 2013 CEBIT 박람회 참관안내</a></td>
+							<td><img src="..images/board/icin_p.gif" alt="첨부파일 PDF" /></td>
+							<td>2013.05.31</td>
+							<td>123456</td>
+						</tr>
+						<tr>
+							<td scope="row">8</td>
+							<td class="txt_left"><a href="#url">아이넥션 2013 CEBIT 박람회 참관안내</a></td>
+							<td><img src="./images/board/icin_p.gif" alt="첨부파일 PDF" /></td>
+							<td>2013.05.31</td>
+							<td>123456</td>
+						</tr>
+						<tr>
+							<td scope="row">7</td>
+							<td class="txt_left"><a href="#url">아이넥션 2013 CEBIT 박람회 참관안내</a></td>
+							<td><img src="./images/board/icin_p.gif" alt="첨부파일 PDF" /></td>
+							<td>2013.05.31</td>
+							<td>123456</td>
+						</tr>
+						<tr>
+							<td scope="row">6</td>
+							<td class="txt_left"><a href="#url">아이넥션 2013 CEBIT 박람회 참관안내</a></td>
+							<td><img src="./images/board/icin_p.gif" alt="첨부파일 PDF" /></td>
+							<td>2013.05.31</td>
+							<td>123456</td>
+						</tr>
+						<tr>
+							<td scope="row">5</td>
+							<td class="txt_left"><a href="#url">아이넥션 2013 CEBIT 박람회 참관안내</a></td>
+							<td><img src="./images/board/icin_p.gif" alt="첨부파일 PDF" /></td>
+							<td>2013.05.31</td>
+							<td>123456</td>
+						</tr>
+						<tr>
+							<td scope="row">4</td>
+							<td class="txt_left"><a href="#url">아이넥션 2013 CEBIT 박람회 참관안내</a></td>
+							<td><img src="./images/board/icin_p.gif" alt="첨부파일 PDF" /></td>
+							<td>2013.05.31</td>
+							<td>123456</td>
+						</tr>
+						<tr>
+							<td scope="row">3</td>
+							<td class="txt_left"><a href="#url">아이넥션 2013 CEBIT 박람회 참관안내</a></td>
+							<td><img src="images/board/icin_p.gif" alt="첨부파일 PDF" /></td>
+							<td>2013.05.31</td>
+							<td>123456</td>
+						</tr>
+						<tr>
+							<td scope="row">2</td>
+							<td class="txt_left"><a href="#url">아이넥션 2013 CEBIT 박람회 참관안내</a></td>
+							<td><img src="./images/board/icin_p.gif" alt="첨부파일 PDF" /></td>
+							<td>2013.05.31</td>
+							<td>123456</td>
+						</tr>
+						<tr>
+							<td scope="row">1</td>
+							<td class="txt_left">아이넥션 2013 CEBIT 박람회 참관안내</td>
+							<td><img src="./images/board/icin_p.gif" alt="첨부파일 PDF" /></td>
+							<td>2013.05.31</td>
+							<td>123456</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="pagination"> <a href="#url" class="direction"><img src="./images/board/btn_num_forw.gif" alt="처음" /></a> <a href="#url" class="direction"><img src="./images/board/btn_num_prev.gif" alt="이전" /></a> <a href="#url">1</a> <strong>2</strong> <a href="#url">3</a> <a href="#url">4</a> <a href="#url">5</a> <a href="#url">6</a> <a href="#url">7</a> <a href="#url">8</a> <a href="#url">9</a> <a href="#url">10</a> <a href="#url" class="direction"><img src="./images/board/btn_num_next.gif" alt="다음" /></a> <a href="#url" class="direction"><img src="./images/board/btn_num_back.gif" alt="마직막" /></a> </div>
+				<%-- //pagination --%> 
+				<a href="./notice_new.jsp">등록</a>
+			</div>
+			<%-- //content --%> 
+		</div>
+		<%-- //rightcolumn --%> 
+		
+  </div>
+	<%-- //container --%> 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	
+</div>
+<%-- //wrap --%>
+
+
+
+
+
+
+
+
+<div class="footer" id="footer" align="center">
+	<%@ include file="../include/footer.jsp" %>
+
+	
+</div>
+<%-- //footer --%>
+</body>
+<%-- //bg_w_body --%>
+</html>

@@ -1,0 +1,15 @@
+<%@page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+
+        <div id="left_mneu">
+            <p><img src="./images/product/left_title.gif" alt="제품소개"></p>
+                
+            <div class="gnbNavi gnbBg2">
+                <ul>
+                    <li class="gnb_01"><a href="javascript:go_21()" class="menu_01"><span>MOZART</span></a></li>
+                    <li class="gnb_02"><a href="javascript:go_22()" class="menu_02"><span>Fortify SCA</span></a></li>
+                    <li class="gnb_03"><a href="javascript:go_23()" class="menu_03"><span>Fortify WebInspect</span></a></li>
+                    <li class="gnb_04"><a href="javascript:go_24()" class="menu_04"><span>Application Defender</span></a></li>
+                    <li class="gnb_05"><a href="javascript:go_25()" class="menu_05"><span>Black Duck Hub</span></a></li>
+                </ul>
+            </div>
+        </div>

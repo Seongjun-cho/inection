@@ -1,0 +1,85 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>게시판 상세보기</title>
+<%@ include file="/include/taglibs.jsp"%>
+<style type="text/css">
+	* {font-size: 9pt;}
+	p {width: 600px; text-align: right;}
+	table tbody tr th {background-color: gray;}
+</style>
+<script src="js/jquery-1.6.1.min.js" ></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	//목록으로
+	$("#goListBtn").click(function(){
+		$("#form").attr("action","boardList.action").submit();
+	});
+	
+	//리플달기
+	$("#replyFormBtn").click(function(){
+		$("#inputType").val("reply");
+		$("#form").attr("action","boardInputForm").submit();
+	});
+	
+	//수정
+	$("#modifyFormBtn").click(function(){
+		$("#inputType").val("update");
+		$("#form").attr("action","boardInputForm").submit();
+	});
+	
+	//삭제
+	$("#deleteFormBtn").click(function(){
+		var re = confirm("게시글을 삭제하시겠습니까?\n삭제된 게시글은 복구할 수 없습니다.");
+		if(re){
+			$("#form").attr("action","boardDelete").submit();	
+			return;
+		}else{
+			return;
+		}
+	});
+
+});
+</script>
+</head>
+<body>
+	<div align="center">
+		<form name="form" action="" method="post" id="form">
+			<input type="hidden" name="sseq" id="sseq" value="${boardVO.sseq}" /> 
+			<input type="hidden" name="curPage" id="curPage" value="${boardVO.curPage}"/>
+			<input type="hidden" name="inputType" id="inputType" />
+			<table border="1" summary="게시판 상세조회">
+				<caption>게시판 상세조회</caption>
+				<colgroup>
+					<col width="100" />
+					<col width="500" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th align="center">제목</th>
+						<td>${boardVO.subject}</td>
+					</tr>
+					<tr>
+						<th align="center">작성자/조회수</th>
+						<td>${boardVO.writer}&nbsp;&nbsp;/&nbsp;&nbsp;${boardVO.cnt}</td>
+					</tr>
+					<tr>
+						<th align="center">내용</th>
+						<td align="center">${boardVO.content}</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>
+				<input type="button" value="리플달기" id="replyFormBtn" />
+				<input type="button" value="목록" id="goListBtn" />
+				<input type="button" value="수정" id="modifyFormBtn" />
+				<input type="button" value="삭제" id="deleteFormBtn" />
+			</p>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>게시판 등록 폼</title>
+<%@ include file="/include/taglibs.jsp"%>
+<style type="text/css">
+* {
+	font-size: 9pt;
+}
+
+p {
+	width: 600px;
+	text-align: right;
+}
+
+table tbody tr th {
+	background-color: gray;
+}
+</style>
+<script src="js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	// 목록으로
+	$("#goListBtn").click(function(){
+		$("#form").attr("action","boardList.action").submit();
+	});
+	
+	// 등록
+	$("#registBtn").click(function(){
+		$("#form").attr("action", "boardInputSubmit").submit();
+	});
+	
+	// 수정 
+	$("#updateBtn").click(function(){
+		$("#form").attr("action", "boardInputSubmit").submit();
+	});
+
+});
+</script>
+</head>
+<body>
+	<div align="center">
+		<form name="form" id="form" action="" method="post">
+			<input type="hidden" name="inputType" value="${boardVO.inputType}" />
+			<input type="hidden" name="curPage" id="curPage" value="${boardVO.curPage}"/>
+			<input type="hidden" name="groupNo" id="groupNo" value="${boardVO.groupNo}"/>
+			<input type="hidden" name="orderNo" id="orderNo" value="${boardVO.orderNo}"/>
+			<input type="hidden" name="nested" id="nested" value="${boardVO.nested}"/>
+			<input type="hidden" name="sseq" id="sseq" value="${boardVO.sseq}" /> 
+			<table border="1" summary="게시판 글쓰기 폼">
+				<caption>게시판 글쓰기 폼</caption>
+				<colgroup>
+					<col width="100" />
+					<col width="500" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th align="center">제목</th>
+						<td>
+							<input type="text" name="subject" 
+								<c:if test="${boardVO.inputType == 'update'}">value="${boardVO.subject}"</c:if>
+								<c:if test="${boardVO.inputType == 'reply'}">value="RE : ${boardVO.subject}" readonly="readonly"</c:if>
+							/>
+						</td>
+					</tr>
+					<tr>
+						<th align="center">작성자</th>
+						<td>
+							<input type="text" name="writer" <c:if test="${boardVO.inputType == 'update'}">value="${boardVO.writer}"</c:if> />
+						</td>
+					</tr>
+					<tr>
+						<th align="center">내용</th>
+						<td><textarea rows="20" cols="50" name="content" ><c:if test="${boardVO.inputType == 'update'}">${boardVO.content}</c:if></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<p>
+				<input type="button" value="목록" id="goListBtn" />
+				<c:if test="${boardVO.inputType == 'update'}">
+					<input type="button" value="수정완료" id="updateBtn" />
+				</c:if>
+				<c:if test="${boardVO.inputType == 'insert' || boardVO.inputType == 'reply'}">
+					<input type="button" value="등록" id="registBtn" />
+				</c:if>
+			</p>
+		</form>
+	</div>
+</body>
+</html>
+
+

@@ -1,0 +1,102 @@
+<%@page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<jsp:include page="../include/head.jsp" flush="true" />
+
+<%-- Add JS --%> 
+<script type="text/javascript">
+<!--
+$(function(){
+	var mact = $('.gnb_05');
+	var mactDis = $('.gnb_05 ul');
+	var mactOver = $('.gnb_05');
+
+	mact.addClass("active");
+	mactDis.css("display","block");
+	mactOver.eq(0).attr("class", "active");// 메뉴순서 0부터 시작
+});
+//-->
+</script> 
+
+<%--contents--%>
+
+<div id="subContents_wrap">
+  <div class="subContents bg0301">
+    <jsp:include page="../include/leftmenu03.jsp" flush="true" />
+    <div class="contents_wrap">
+      <div class="local_wrap">
+        <ul>
+          <li class="local">HOME > 사업영역 > Application Security</li>
+		  <li class="title">Application Security</li>
+		  <li class="subtitle1">어플리케이션 보안 </li>
+		  <li class="subtitle2" style="font-size:25px;">Application Security</li>	  
+		  
+			<!-- Secure Coding Inspection System -->
+        </ul>
+      </div>
+      <div class="contents"> 
+        <%--//내용시작--%>
+        <h4 class="h4font">글로벌 1位 솔루션 구축 / 설치 / 운영 서비스</h4>
+        <ul class="mb40">
+        	<li class="mt20"><img src="./images/business/secure.PNG" alt="Application Security" style="width:50%;"></li>
+        </ul>
+        
+        <h4 class="h4font">국내 C.C 인증 솔루션을 활용한 점검 서비스</h4>
+        <ul class="mb40">
+        	<li class="mt20"><img src="./images/business/secure3.PNG" alt="Application Security" style="width:50%;"></li>
+        </ul>
+        
+        <h4 class="h4font">SDLC 소프트웨어 보안 품질 보증 프로세스</h4>
+        <ul class="mb40">
+        	<li>개발 또는 운영 중인 어플리케이션에 대한 보안 지식 없이 누구나 쉽게 접근할 수 있으며, 각 단계의 보안 솔루션을 사용 하여 정적 분석, <br/>
+        	동적 분석의 대한 취약점 Report를 받을 수 있다. 보다 안전하고 보안 품질이 높은 어플리케이션 개발하는 프로세스</li>       
+          <li class="mt20"><img src="./images/business/business_application_security_img01.png" alt="Application Security" style="width:100%;"></li>
+          <li class="mt20"><img src="./images/business/business_application_security_img02.gif" alt="Application Security" style="width:100%;"></li>
+        </ul>
+        
+        <h4 class="h4font">효율적인 애플리케이션 보안 취약점 관리</h4>
+        <ul class="mb40">
+          <li class="mt20"><img src="./images/business/business_application_security_img03.png" alt="Application Security" style="width:100%;"></li>
+        </ul>
+        
+        <h4 class="h4font">SDLC(Secure Development Life Cycle) 소프트웨어 보안 점검 자동화 프로세스 방안</h4>
+        <ul class="mb40">
+          <li class="mt20"><img src="./images/business/business_application_security_img04.gif" alt="Application Security" style="width:100%;"></li>
+        </ul>
+        
+        
+        
+        
+        
+        
+       <!--
+        
+        <h4><img src="./images/business/business_business5_h401.gif" alt=""></h4>
+        <p class="mb40">개발된 어플리케이션을 보안점검의 대한 사전지식 없이 누구나 쉽게 접근하여 점검시스템을 사용 하여 정적 분석, 동적 분석의 대한 취약점 Report를 받을 수 있어 보다 안전하고 quality가 높은 어플리케이션 개발.</p>
+        <h4><img src="./images/business/business_business5_h402.gif" alt=""></h4>
+        <ul class="mb20">
+          <li>- 애플리케이션 개발 소스에 대한 취약점 탐지 및 대응책 제시</li>
+          <li>- 다양한 언어 지원(Adobe ColdFusion, ASP.NET, C/C++, C#, Classic ASP, COBOL, HTML, Java, JavaScript/AJAX, JSP, PHP, PL/SQL,<br />
+            <span class="ml10"></span>MS T-SQL, VB for Applications, VB Script, VB.NET, XML )</li>
+          <li>- OWASP TOP 10, CWE 취약성을 포함하는 다양한 보안 및 품질 관점 카테고리 지원 </li>
+          <li>- 개발 프로세스 단계(개발/변경/운영등)별 점검 가능</li>
+          <li>- 개발자/보안관리자/QA 관점에서 사용</li>
+          <li>- 인터넷을 통한 보안 룰 업데이트</li>
+          <li>- 개발자 관점의 취약점 가이드, 한글 보고서 제공</li>
+          <li>- IDE Plug-in, Command Line 및 GUI 점검</li>
+        </ul>
+        <h4><img src="./images/business/business_business5_h403.gif" alt=""></h4>
+        <p class="mb40"><img src="./images/business/business_business5_img01.gif" alt=""></p>
+        <h4><img src="./images/business/business_business5_h404.gif" alt=""></h4>
+        <p class="mb40"><img src="./images/business/business_business5_img02.gif" alt=""></p>
+        <h4><img src="./images/business/business_business5_h405.gif" alt=""></h4>
+        <ul>
+          <li>- 정적 / 동적 / 런타임 분석기에의해 수집된보안 취약점관리 / 추적 / 제거 방안 제공시스템</li>
+          <li>- 역할기반접근, 프로세스기반의보안 취약점관리</li>
+          <li>- 핵심 개발 환경과의 연동</li>
+          <li>- 유연한 보안 취약점 저장소 관리 및 리포팅 제공</li>
+         </ul>  -->
+        <%--내용끝//--%> 
+      </div>
+    </div>
+  </div>
+</div>
+<jsp:include page="../include/footer.jsp" flush="true" />

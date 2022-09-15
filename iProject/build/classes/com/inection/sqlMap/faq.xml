@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="faq">
+
+	<resultMap type="faqVO" id="faqVO"></resultMap>
+
+	<!-- 게시판 목록 조회-->
+	<select id="getFaqList" parameterType="faqVO" resultMap="faqVO">
+		<!-- 오라클 쿼리 START
+		SELECT Y.* FROM (  
+			SELECT ROWNUM AS NUM, X.* FROM (	
+				SELECT
+					ROWNUM AS RNUM
+					,SSEQ 
+					,QUESTION
+					,ANSWER
+					,REGDATE
+				FROM dkdlsprtus.home_faq
+					ORDER BY RNUM DESC
+				) X
+			WHERE ROWNUM <![CDATA[<=]]> #{endRow}
+		) Y WHERE NUM > #{startRow} -->
+		<!-- 오라클 쿼리 END -->
+		
+		<!-- MYSQL 쿼리 START -->
+		SELECT Y.* FROM (  
+			SELECT @NUM:=@NUM+1 AS NUM, X.* FROM (
+        		SELECT W.* FROM (
+        			SELECT @RNUM:=@RNUM+1 AS RNUM, SSEQ, QUESTION, ANSWER, REGDATE FROM dkdlsprtus.home_faq, (SELECT @RNUM:=0) V  ORDER BY SSEQ ASC
+        		) W ORDER BY W.RNUM DESC
+			) X, (SELECT @NUM:=0) U
+			WHERE (SELECT @RN:=@RN+1 FROM (SELECT @RN:=0) P) <![CDATA[<=]]> #{endRow}
+		) Y WHERE NUM > #{startRow}
+		<!-- MYSQL 쿼리 END -->
+	</select>
+	
+	<!-- 게시판 목록 카운트 -->
+	<select id="getFaqListCnt" resultType="int">
+		SELECT
+			COUNT(*) CNT
+		FROM dkdlsprtus.home_faq
+	</select>
+
+	<!-- 게시판 상세 보기 -->
+	<select id="getFaqDetail" parameterType="int" resultMap="faqVO" >
+		SELECT
+			SSEQ 
+			,QUESTION
+			,ANSWER
+			,REGDATE
+		FROM dkdlsprtus.home_faq
+			WHERE SSEQ = #{faqNo}
+	</select>
+	
+	<!-- 게시판 글쓰기 -->
+	<insert id="getFaqInput" parameterType="faqVO">
+		INSERT INTO dkdlsprtus.home_faq(
+			<!--  SSEQ --> 
+			QUESTION
+			,ANSWER
+			,REGDATE
+		)VALUES(
+			<!-- S_home_faq.NEXTVAL     mySql은 자동 증가기능이 있음 -->
+			#{question}
+			,#{answer}
+			,NOW()    <!--  SYSDATE  -->
+		)
+	</insert>
+	
+	<!-- 게시판 수정 -->
+	<update id="setFaqUpdate" parameterType="faqVO">
+		UPDATE dkdlsprtus.home_faq SET
+			QUESTION = #{question}
+			,ANSWER = #{answer}
+		WHERE SSEQ = #{sseq}
+	</update>
+	
+	<!-- 게시판 삭제 -->
+	<delete id="setFaqDelete" parameterType="int">
+		DELETE FROM dkdlsprtus.home_faq WHERE SSEQ = #{faqNo}
+	</delete>
+	
+</mapper>

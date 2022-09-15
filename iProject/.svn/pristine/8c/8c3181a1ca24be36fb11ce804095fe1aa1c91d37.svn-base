@@ -1,0 +1,3 @@
+struts.multipartparser=Jakarta
+struts.multipart.saveDir=C:\\childmildtestupload
+struts.multipart.maxSize=2097152 

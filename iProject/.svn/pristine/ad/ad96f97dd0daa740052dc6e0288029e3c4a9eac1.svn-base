@@ -1,0 +1,34 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* base */
+html {width:100%; height:100%; overflow-y:scroll;}
+body {width:100%; height:100%;}
+body {font-family:Nanum Gothic; color:#666; font-size:12px; line-height:21px;/*line-height:18px;*/}
+body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, span, a, table, thead, tfoot, tbody, th, td, form, legend, label, input, textarea, address, strong, em, pre, q, abbr, acronym, cite, blockquote, object, iframe {margin:0; padding:0;}
+img, fieldset, hr {border:none; margin:0; padding:0;}
+img {vertical-align:top;}
+ul, ol {list-style-type:none;}
+h1, h2, h3, h4, h5, h6 {font-size:100%; font-weight:normal;}
+select, input, textarea {font-family:돋움, Dotum, tahoma, sans-serif; font-size:100%; vertical-align:middle;}
+table {border-collapse:collapse; table-layout:fixed;}
+address {font-style:normal;}
+hr {clear:both; display:none;}
+legend, caption {width:0; height:0; font-size:0; line-height:0; visibility:hidden; overflow:hidden;}
+
+a:link, 
+a:visited {color:#666; text-decoration:none;}
+a:hover, 
+a:active,
+a:focus {color:#666; text-decoration:none;}
+
+select {border:1px solid #c3c3c3; font-size:12px; line-height:20px; color:#666666; height:20px;}
+input.text { border:1px solid #c3c3c3; font-size:12px; height:18px; color:#666666; line-height:17px; padding:0 5px 0 5px;}
+input.file { border:1px solid #c3c3c3; font-size:12px; height:20px; color:#666666; padding:2px 5px 0 5px; background:#FFF;}
+input.check, input.radio { overflow:hidden; margin:0; padding:0; width:12px; height:13px; vertical-align:middle;}
+textarea.area {color:#666666; padding:3px 5px 3px 5px; font-size:12px; border:1px solid #c3c3c3;}
+.png24 { tmp:expression(setPng24(this)); }
+
+/* clear style */
+.clearbox			{*zoom:1;} /* ie를 위한 핵 */
+.clearbox:after	{content:""; display:block; clear:both; height:0; visibility:hidden;}/* 기타 브라우져

@@ -1,0 +1,169 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<title>아이넥션</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/sub.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+
+<%-- custom javascript --%>
+<script type="text/javascript" language="javascript">
+	$(document).ready(function() {
+
+		//목록으로
+		$("#BtnList").click(function(){
+			$("#form").attr("action","noticeList.action").submit();
+		});
+		
+		//수정
+		$("#BtnQnaModify").click(function(){
+			alert("hey man~~");
+			$("#inputType").val("update");
+			$("#form").attr("action","noticeInputForm").submit();
+		});
+		
+		//삭제
+		$("#BtnQnaDelete").click(function(){
+			var re = confirm("게시글을 삭제하시겠습니까?\n삭제된 게시글은 복구할 수 없습니다.");
+			if(re){
+				$("#form").attr("action","notice_Delete").submit();	
+				return;
+			}else{
+				return;
+			}
+		});
+
+	});
+</script>
+
+</head>
+<body
+	style="background: url(images/sub/sub_bg.jpg) repeat-x top center;">
+	<div id="wrap">
+
+		<div id="skipToContent">
+			<a href="#container" accesskey="1"
+				title="브라우저에 따라 Alt + 1 또는 Alt + Shift + 1 또는 Shift + Esc + 1 후 Enter를 치시면 본문내용으로 바로갑니다.">본문
+				바로가기</a>
+		</div>
+		<div id="header"
+			style="background: url(images/top/top_bg.png) no-repeat;">
+
+			<%@ include file="../include/top.jsp"%>
+			<%-- //lnb --%>
+		</div>
+		<%-- //header --%>
+
+		<div id="container">
+			<div class="sub_vjr"></div>
+			<%-- //sub_vjr --%>
+			<span class="sub_vjr"><img src="images/sub/sub_visual_5.png"
+				width="970" height="207" /></span>
+			<div class="leftcolumn">
+				<div id="snb">
+					<h2><img src="images/menu/left_title_04.jpg" width="200" height="36" /></h2>
+					<ul>
+						<li><a href="noticeList" class="on"	>공지사항</a></li>
+						<li><a href="QNA_List">Q&A(A/S접수)</a></li>
+						<li><a href="FAQ_List">FAQ</a></li>
+					</ul>
+				</div>
+				<div>
+					<a href="#"><img src="images/common/left_banner_01.jpg"
+						width="200" height="120" /></a>
+				</div>
+			</div>
+			<%-- //leftcolumn --%>
+
+			<div class="rightcolumn">
+				<div class="top_tit">
+					<h3>
+						<img src="images/menu/title_05_01.jpg" alt="" width="400"
+							height="50" />
+					</h3>
+					<div class="location">
+						<span class="hide">페이지 위치 : </span> <a href="#url"><img
+							src="images/common/ico_home.jpg" width="11" height="11"
+							style="vertical-align: middle" /> HOME</a> &gt; <a href="#url">게시판</a>
+						&gt; <strong>공지사항</strong>
+					</div>
+				</div>
+				<%-- //top_tit --%>
+				<div class="content">
+					<form name="form" action="" method="post" id="form">
+						<input type="hidden" name="sseq" id="sseq" value="${boardVO.sseq}" /> 
+						<input type="hidden" name="curPage" id="curPage" value="${boardVO.curPage}"/>
+						<input type="hidden" name="inputType" id="inputType" />
+					<p>
+					<table cellspacing="0" class="b_view"
+						summary="제목, 등록일, 조회수, 첨부파일 순으로 보여주는 관련서식 게시글">
+
+						<colgroup>
+							<col width="15%" />
+							<col width="35%" />
+							<col width="15%" />
+							<col width="35%" />
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">제목</th>
+								<td>${boardVO.subject}</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row">등록일</th>
+								<td>${boardVO.regdate}</td>
+								<th scope="row" class="txt_center pl0">조회수</th>
+								<td>${boardVO.cnt}</td>
+							</tr>
+							<tr>
+								<th scope="row">첨부파일</th>
+								<td class="file"><a href="#url">컴온 요~~~ <img
+										src="images/board/icin_p.gif" alt="첨부파일 PDF" /></a></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="4"><div class="txt_box">
+										<p>${boardVO.content}</p>
+										<p>&nbsp;</p>
+										<p>&nbsp;</p>
+										<p>&nbsp;</p>
+										<p>&nbsp;</p>
+										<p>&nbsp;</p>
+										<p>&nbsp;</p>
+										<p>&nbsp;</p>
+										<p>&nbsp;</p>
+										<p>&nbsp;</p>
+									</div></td>
+							</tr>
+						</tbody>
+					</table>
+					</p>
+
+					<div class="txt_center mt10">
+						<input type="button" value="수정" id="BtnQnaModify" class="bg_gry" style="cursor: pointer;" />
+						<input type="button" value="삭제" id="BtnQnaDelete" class="bg_gry" style="cursor: pointer;" />
+						<input type="button" value="목록" id="BtnList" class="bg_gry" style="cursor: pointer;" />
+					</div>
+				</div>
+				<%-- //content --%>
+			</div>
+			<%-- //rightcolumn --%>
+
+		</div>
+		<%-- //container --%>
+	</div>
+	<%-- //wrap --%>
+
+	<div class="footer" id="footer" align="center">
+		<%@ include file="../include/footer.jsp"%>
+	</div>
+	<%-- //footer --%>
+</body>
+<%-- //bg_w_body --%>
+</html>

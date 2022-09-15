@@ -1,0 +1,50 @@
+﻿<%@page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<jsp:include page="../include/head.jsp" flush="true" />
+
+<%-- Add JS --%> 
+<script type="text/javascript">
+<!--
+$(function(){
+	var mact = $('.gnb_01');
+	var mactDis = $('.gnb_01 ul');
+	var mactOver = $('.gnb_01');
+
+	mact.addClass("active");
+	mactDis.css("display","block");
+	mactOver.eq(0).attr("class", "active");// 메뉴순서 0부터 시작
+});
+//-->
+</script> 
+
+<%--contents--%>
+<div id="subContents_wrap">
+  <div class="subContents bg0101">
+    <jsp:include page="../include/leftmenu01.jsp" flush="true" />
+    <div class="contents_wrap">
+      <div class="local_wrap">
+        <ul>
+          <li class="local">HOME > 회사소개 > 기업비전</li>
+		  <li class="title">기업비전</li>
+        </ul>
+      </div>
+      <div class="contents"> 
+        <%--//내용시작--%>
+        <p class="con_top"><img src="./images/company/0101.png" alt=""></p>
+        <ul class="vision">
+          <li>안녕하십니까?<br />
+            <span>기업의 가치는 <img src="./images/company/company_vision_img01.png" alt="">로 평가될수 있다고 생각합니다.</span><br />
+            이런 기준에서 보면 아이넥션소프트는 <strong class="f_blue">풍부한 경험을 가지고 있는 인력</strong>뿐만 아니라 <strong class="f_blue">끊임없는 신기술 개발, 고객을 위한 서비스정신</strong>을 가지고,<br />
+            기업내 정보의 수집과 축적 그리고 활용과 전달의 각 단꼐에서 필요한 솔루션과 서비스를 제공하는 기업으로성장하고 있습니다.<br />
+          </li>
+          <li><strong class="f_blue f15">정보수집단계에서 필요한 솔루션과 경험을 정확히 제공하는 전문기업</strong><br />
+            모바일환경에서의 데이터수집과 대량전송 경험을 바탕으로 다양한 유무선 데이터수집방법을 고객에게 제공하여 드리고 있으며 무결점의<br />
+            정보임을 확인하기 위해 작동되는 소프트웨어 품질까지도 확인하는 체제를 갖추고 끊임없이 연구개발하는 기업입니다.<br />
+	  </li>
+          <li class="sign"><img src="./images/company/company_vision_img02.gif" alt=""></li>
+        </ul>
+        <%--내용끝//--%> 
+      </div>
+    </div>
+  </div>
+</div>
+<jsp:include page="../include/footer.jsp" flush="true" />

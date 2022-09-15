@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context path="/MyBatis_JNDI2">
+<Resource maxWait="-1" maxIdle="10" maxActive="20" password="inecti0n" username="dkdlsprtus" url="jdbc:mysql://uj64-011.cafe24.com:3306/dkdlsprtus" driverClassName="com.mysql.jdbc.Driver" type="javax.sql.DataSource" auth="Container" name="jdbc/myora"/>
+</Context> 

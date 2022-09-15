@@ -1,0 +1,141 @@
+<%@page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<%@ include file="/include/taglibs.jsp"%>
+<jsp:include page="../include/head.jsp" flush="true" />
+
+<%-- Add JS --%>
+<script type="text/javascript">
+<!--
+$(function(){
+	var mact = $('.gnb_02');
+	var mactDis = $('.gnb_02 ul');
+	var mactOver = $('.gnb_02');
+
+	mact.addClass("active");
+	mactDis.css("display","block");
+	mactOver.eq(0).attr("class", "active");// 메뉴순서 0부터 시작
+});
+//-->
+$(document).ready(function(){
+	<c:if test="${qnaVO.inputType == 'update'}">
+		$("#BtnSave").hide(); 
+		$("#BtnUpdate").show();
+	</c:if>
+	<c:if test="${qnaVO.inputType == 'insert'}">
+		$("#BtnSave").show();
+		$("#BtnUpdate").hide(); 
+	</c:if>
+	
+	//TODO
+	// 목록으로
+});
+function BtnList(){
+	$("#form").attr("action","QNA_List").submit();
+}
+function BtnSave(){
+	
+	if(subject.value == '') {
+		alert('제목을 입력해주세요.');
+		subject.focus();
+		return false;
+	} else if(email.value == '') {
+		alert('E-mail을 입력해주세요.');
+		email.focus();
+		return false;
+	} else if(phone.value == '') {
+		alert('전화번호를 입력해주세요.');
+		phone.focus();
+		return false;
+	} else if(content.value == '') {
+		alert('내용을 입력해주세요.');
+		content.focus();
+		return false;
+	} else if(secret.value != '') {
+		if(stext.value == '') {
+			alert('비밀번호를 입력해주세요.');
+			stext.focus();
+			return false;
+		}
+	} else {
+		$("#form").attr("action", "QNA_InputSubmit").submit();	
+	}
+}
+function BtnUpdate(){
+	$("#form").attr("action", "QNA_InputSubmit").submit();
+}
+</script>
+
+<%--contents--%>
+<div id="subContents_wrap">
+
+	<div class="subContents bg0501">
+
+		<jsp:include page="../include/leftmenu05.jsp" flush="true" />
+               
+        <div class="contents_wrap">
+        	<div class="local_wrap">
+            	<ul>
+		          <li class="local">HOME > 고객센터 > Q&A</li>
+				  <li class="title">Q&A</li>
+                </ul>
+            </div>
+            <div class="contents">
+            	<p class="pb47"><img src="./images/center/0101.png" alt=""></p>
+
+                <%-- bbs Start --%>
+                <form name="form" id="form" method="post">
+				<input type="hidden" name="inputType" value="${qnaVO.inputType}" />
+				<input type="hidden" name="curPage" id="curPage" value="${qnaVO.curPage}"/>
+				<input type="hidden" name="sseq" id="sseq" value="${qnaVO.sseq}" />
+				
+                <table width="764" cellpadding="0" cellspacing="0" class="bbs_view" >
+                    <colgroup>
+                        <col width="95"/>
+                        <col width="669"/>
+                    </colgroup>
+                    <tr>
+                    	<th>제목</th>
+                    	<td><input type="text" id="subject" name="subject" title="제목을 입력하세요" class="text" value="${qnaVO.subject}" style="width:97%;" Placeholder="제목을 입력해주세요."></td>
+                	</tr>
+               		<%-- <tr>
+                    	<th>작성자</th>
+                    	<td><input type="text" name="q_id" id="q_id" value="${qnaVO.q_id}" class="text"></td>
+                	</tr> --%>
+                	<tr>
+                    	<th>이메일</th>
+                    	<td><input type="text" name="email" id="email" value="${qnaVO.email}" class="text" style="width:97%;" Placeholder="이메일을 입력해주세요."></td>
+                	</tr>
+                	<tr>
+                    	<th>전화번호</th>
+                    	<td><input type="text" name="phone" id="phone" value="${qnaVO.phone}" class="text" style="width:97%;" Placeholder="전화번호를 입력해주세요."></td>
+                	</tr>
+                	<tr>
+                    	<th>내용</th>
+                    	<td><textarea name="content" id="content" cols="30" rows="10" style="width:97%; height:200px; margin:8px 0 8px 0;" class="area" Placeholder="※ 소속과 이름을 기재해 주시면 좀 더 신속하고 정확한 답변이 가능합니다."><c:if test="${qnaVO.inputType == 'update'}">${qnaVO.content}</c:if></textarea></td>
+                    </tr>
+                    <%-- 
+                    <tr>
+                    	<th>파일</th>
+                    	<td><input type="text" name="stext" value="" class="text" style="width:300px;"></td>
+                    </tr>
+                     --%>
+                    <tr>
+                    	<th>비밀번호</th>
+                    	<td><input type="text" name="stext" value="" class="text"> <input name="secret" type="checkbox" value="Y" />비밀글일 경우 체크해주세요.  (글 삭제 및 수정에 필요하니,반드시 기억해 주세요.)</td>
+                    </tr>
+                </table>
+                
+                <p class="btn_center">
+				<a href="javascript:BtnSave()"><img src="./images/common/btn_ok.gif" alt="확인" id="BtnSave"></a>
+				<a href="javascript:BtnUpdate()"><img src="./images/common/btn_ok.gif" alt="수정" id="BtnUpdate"></a>
+				<a href="javascript:BtnList()"><img src="./images/common/btn_list2.gif" alt="목록" id="BtnList"></a>
+                </p>
+                <%-- bbs End --%>
+                </form>
+
+            </div>
+        </div>
+            
+    </div>
+</div>
+
+<jsp:include page="../include/footer.jsp" flush="true" />

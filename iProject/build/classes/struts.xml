@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- 스트러츠 액션 정의 함수 콜 -->
+	<package name="default" extends="struts-default">
+		<!-- main.jsp (메인화면) -->
+		<action name="mainp" class="com.inection.action.MainAction" method="execute">
+			<result name="success">main/main.jsp</result>
+		</action>
+		<!-- index.jsp END -->
+	<!-- 게시판 Start -->
+		<!-- 목록조회 -->
+<!--		<action name="boardList" class="com.inection.action.BoardAction" method="execute">
+			<result name="success">home_board/board_List.jsp</result>
+		</action>-->
+		<!-- 상세보기 -->
+<!--		<action name="boardView" class="com.inection.action.BoardAction" method="getBoardDetail">
+			<result name="success">home_board/board_View.jsp</result>
+		</action>-->
+		<!-- 글쓰기 Form 이동 -->
+<!--		<action name="boardInputForm" class="com.inection.action.BoardAction" method="setBoardInput">
+			<result name="success">home_board/board_Input.jsp</result>
+		</action>-->
+		<!-- 글쓰기 완료 / 수정 완료 -->
+<!--		<action name="boardInputSubmit" class="com.inection.action.BoardAction" method="setBoardInputSubmit">
+			<result name="success" type="redirectAction"> </result>
+			<result name="error">home_board/board_Input.jsp</result>
+		</action>-->
+		<!-- 글쓰기 삭제 -->
+<!--		<action name="boardDelete" class="com.inection.action.BoardAction" method="setBoardDelete">
+			<result name="success" type="redirectAction"><param name="boardVO" /> boardList</result>
+		</action>-->
+	<!-- 게시판 End -->
+		
+		<!-- 마이페이지 -->
+		<!-- <action name="login" class="com.inection.action.MemberAction" method="login">
+			<result name="success">/member/login.jsp</result>
+		</action> -->
+		<action name="login">
+			<result>/member/login.jsp</result>
+		</action>
+		<action name="join" class="com.inection.action.MemberAction" method="join">
+			<result name="success">/member/join.jsp</result>
+		</action>
+		
+		<!-- 로그인 서브밋 -->
+		<action name="loginSubmit" class="com.inection.action.MemberAction" method="execute">
+			<result name="success" type="redirectAction"><param name="actionName">mainp</param></result>
+			<result name="error">member/login.jsp</result>
+		</action>
+		
+		<!-- 로그아웃 서브밋 -->
+		<action name="logoutSubmit" class="com.inection.action.MemberAction" method="logoutSubmit">
+			<result name="success" type="redirectAction"><param name="actionName">mainp</param></result>
+		</action>
+		
+	<!-- 기타 -->
+	<!-- 페이지 이동 -->
+	<!-- 회사소개 -->
+		<action name="vision" class="com.inection.move.CompanyPage" method="vision">
+			<result name="success">/company/vision.jsp</result>
+		</action>
+		<action name="group" class="com.inection.move.CompanyPage" method="group">
+			<result name="success">/company/group.jsp</result>
+		</action>
+		<action name="partner" class="com.inection.move.CompanyPage" method="partner">
+			<result name="success">/company/partner.jsp</result>
+		</action>
+		<action name="position" class="com.inection.move.CompanyPage" method="position">
+			<result name="success">/company/position.jsp</result>
+		</action>
+		<action name="record" class="com.inection.move.CompanyPage" method="record">
+			<result name="success">/company/record.jsp</result>
+		</action>
+		<action name="tecrecord" class="com.inection.move.CompanyPage" method="tecrecord">
+			<result name="success">/company/tecrecord.jsp</result>
+		</action>
+	<!-- 제품소개 -->
+		<action name="mozart" class="com.inection.move.ProductPage" method="mozart">
+			<result name="success">/product/mozart.jsp</result>
+		</action>
+		<action name="fortify" class="com.inection.move.ProductPage" method="fortify">
+			<result name="success">/product/fortify.jsp</result>
+		</action>
+		<action name="webinspect" class="com.inection.move.ProductPage" method="webinspect">
+			<result name="success">/product/webinspect.jsp</result>
+		</action>
+		<!-- <action name="appdefender" class="com.inection.move.ProductPage" method="appdefender">
+			<result name="success">/product/appdefender.jsp</result>
+		</action> -->
+		<action name="kong" class="com.inection.move.ProductPage" method="kong">
+			<result name="success">/product/kong.jsp</result>
+		</action>
+		<action name="sonatype" class="com.inection.move.ProductPage" method="sonatype">
+			<result name="success">/product/sonatype.jsp</result>
+		</action>
+		<action name="blancco" class="com.inection.move.ProductPage" method="blancco">
+			<result name="success">/product/blancco.jsp</result>
+		</action>
+		<action name="fossid" class="com.inection.move.ProductPage" method="fossid">
+			<result name="success">/product/fossid.jsp</result>
+		</action>
+		<action name="impervarasp" class="com.inection.move.ProductPage" method="impervarasp">
+			<result name="success">/product/impervarasp.jsp</result>
+		</action>
+		
+	<!-- 사업영역 -->
+		<action name="mobile" class="com.inection.move.BusinessPage" method="mobile">
+			<result name="success">/business/mobile.jsp</result>
+		</action>
+		<action name="callcenter" class="com.inection.move.BusinessPage" method="callcenter">
+			<result name="success">/business/callcenter.jsp</result>
+		</action>
+		<action name="memorial" class="com.inection.move.BusinessPage" method="memorial">
+			<result name="success">/business/memorial.jsp</result>
+		</action>
+		<action name="smartbd" class="com.inection.move.BusinessPage" method="smartbd">
+			<result name="success">/business/smartbd.jsp</result>
+		</action>
+		<action name="secure" class="com.inection.move.BusinessPage" method="secure">
+			<result name="success">/business/secure.jsp</result>
+		</action>
+	<!-- 채용정보 -->
+		<action name="recruitInfo" class="com.inection.move.RecruitPage" method="recruitInfo">
+			<result name="success">/recruit/recruitInfo.jsp</result>
+		</action>
+		<action name="wellbeing" class="com.inection.move.RecruitPage" method="wellbeing">
+			<result name="success">/recruit/wellbeing.jsp</result>
+		</action>
+	<!--  sitemap -->
+		<action name="sitemap" class="com.inection.move.EtcPage" method="sitemap">
+			<result name="success">/include/sitemap.jsp</result>
+		</action>
+	<!-- QNA 게시판 Start -->
+		<!-- 목록조회 -->
+		<action name="QNA_List" class="com.inection.action.QNA_Action" method="execute">
+			<result name="success">qna/qna_List.jsp</result>
+		</action> 
+		<!-- 상세보기 -->
+		<action name="QNA_View" class="com.inection.action.QNA_Action" method="getQnaDetail">
+			<result name="success">qna/qna_View.jsp</result>
+		</action>
+		<!-- 글쓰기 Form 이동 -->
+		<action name="QNA_InputForm" class="com.inection.action.QNA_Action" method="setQnaInput">
+			<result name="success">qna/qna_Input.jsp</result>
+		</action>
+		<!-- 글쓰기 완료 / 수정 완료 -->
+		<action name="QNA_InputSubmit" class="com.inection.action.QNA_Action" method="setQnaInputSubmit">
+			<result name="success" type="redirectAction">QNA_List</result>
+			<result name="error">qna/qna_Input.jsp</result>
+		</action>
+		<!-- 글쓰기 삭제 -->
+		<action name="QNA_Delete" class="com.inection.action.QNA_Action" method="setQnaDelete">
+			<result name="success" type="redirectAction">QNA_List</result>
+		</action>
+	<!-- QNA 게시판 END -->
+	
+	<!-- recruit 게시판 Start -->
+		<!-- 목록조회 -->
+		<action name="Recruit_List" class="com.inection.action.Recruit_Action" method="execute">
+			<result name="success">recruit/recruit_List.jsp</result>
+		</action> 
+		<!-- 상세보기 -->
+		<action name="Recruit_View" class="com.inection.action.Recruit_Action" method="getRecruitDetail">
+			<result name="success">recruit/recruit_View.jsp</result>
+		</action>
+		<!-- 글쓰기 Form 이동 -->
+		<action name="Recruit_InputForm" class="com.inection.action.Recruit_Action" method="setRecruitInput">
+			<result name="success">recruit/recruit_Input.jsp</result>
+		</action>
+		<!-- 글쓰기 완료 / 수정 완료 -->
+		<action name="Recruit_InputSubmit" class="com.inection.action.Recruit_Action" method="setRecruitInputSubmit">
+			<result name="success" type="redirectAction">Recruit_List</result>
+			<result name="error">recruit/recruit_Input.jsp</result>
+		</action>
+		<!-- 글쓰기 삭제 -->
+		<action name="Recruit_Delete" class="com.inection.action.Recruit_Action" method="setRecruitDelete">
+			<result name="success" type="redirectAction">Recruit_List</result>
+		</action>
+	<!-- recruit 게시판 END -->
+	
+	<!-- 공지사항 Start -->
+		<!-- 목록조회  -->
+		<action name="noticeList" class="com.inection.action.NoticeAction" method="execute">
+			<result name="success">notice/notice_List.jsp</result>
+		</action>
+		<!-- 상세보기  -->
+		<action name="noticeView" class="com.inection.action.NoticeAction" method="getNoticeDetail">
+			<result name="success">notice/notice_View.jsp</result>
+		</action>
+		<!-- 글쓰기 Form 이동  -->
+		<action name="noticeInputForm" class="com.inection.action.NoticeAction" method="setNoticeInput">
+			<result name="success" >notice/notice_Input.jsp</result>
+		</action>
+		<!-- 글쓰기 Submit  -->
+		<action name="noticeSubmit" class="com.inection.action.NoticeAction" method="setNoticeInputSubmit">
+			<result name="success" type="redirectAction">noticeList</result>
+			<result name="error">notice/notice_Input.jsp</result>
+		</action>
+		<!-- 글쓰기 삭제 -->
+		<action name="notice_Delete" class="com.inection.action.NoticeAction" method="setNoticeDelete">
+			<result name="success" type="redirectAction">noticeList</result>
+		</action>
+	<!-- 공지사항 End -->
+	
+	
+	<!-- 자료실 Start -->
+		<!-- 목록조회  -->
+		<action name="referenceList" class="com.inection.action.ReferenceAction" method="execute">
+			<result name="success">reference/reference_List.jsp</result>
+		</action>
+		<!-- 상세보기  -->
+		<action name="referenceView" class="com.inection.action.ReferenceAction" method="getReferenceDetail">
+			<result name="success">reference/reference_View.jsp</result>
+		</action>
+		<!-- 글쓰기 Form 이동  -->
+		<action name="referenceInputForm" class="com.inection.action.ReferenceAction" method="setReferenceInput">
+			<result name="success" >reference/reference_Input.jsp</result>
+		</action>
+		<!-- 글쓰기 Submit  -->
+		<action name="referenceSubmit" class="com.inection.action.ReferenceAction" method="setReferenceInputSubmit">
+			<result name="success" type="redirectAction">referenceList</result>
+			<result name="error">reference/reference_Input.jsp</result>
+		</action>
+		<!-- 글쓰기 삭제 -->
+		<action name="reference_Delete" class="com.inection.action.ReferenceAction" method="setReferenceDelete">
+			<result name="success" type="redirectAction">referenceList</result>
+		</action>
+		<!-- Excel upload (엑셀 업로드) -->
+		<action name="setExcelUpload" class="com.inection.action.ReferenceAction" method="setExcelUpload">
+			<result name="success" type="redirectAction">referenceList</result>
+		</action>
+	<!-- 자료실 End -->
+	
+	<!-- FAQ 게시판 Start --> 
+		<!-- 목록조회 -->
+		<action name="FAQ_List" class="com.inection.action.FAQ_Action" method="execute">
+			<result name="success">faq/faq_List.jsp</result>
+		</action>
+		<!-- 상세보기 -->
+		<action name="FAQ_View" class="com.inection.action.FAQ_Action" method="getFaqDetail">
+			<result name="success">faq/faq_View.jsp</result>
+		</action>
+		<!-- 글쓰기 Form 이동 -->
+		<action name="FAQ_InputForm" class="com.inection.action.FAQ_Action" method="setFaqInput">
+			<result name="success">faq/faq_Input.jsp</result>
+		</action>
+		<!-- 글쓰기 완료 / 수정 완료 -->
+		<action name="FAQ_InputSubmit" class="com.inection.action.FAQ_Action" method="setFaqInputSubmit">
+			<result name="success" type="redirectAction">FAQ_List</result>
+			<result name="error">faq/faq_Input.jsp</result>
+		</action>
+		<!-- 글쓰기 삭제 -->
+		<action name="FAQ_Delete" class="com.inection.action.FAQ_Action" method="setFaqDelete">
+			<result name="success" type="redirectAction">FAQ_List</result>
+		</action>
+	<!-- FAQ 게시판 END -->
+	
+	<!-- footer Start --> 
+		<!-- 개인정보처리조회 -->
+		<action name="individual" >
+			<result>main/individual.jsp</result>
+		</action>
+	<!-- footer END -->
+	</package>
+</struts>
